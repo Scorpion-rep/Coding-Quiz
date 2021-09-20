@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, innitial-scale=1.0">
+    <title>Quiz Challenge</title>
+    <link rel="stylesheet" href="style.css" />
+</head> 
+<body>
+    <section class="container"></div>
+       
+        <div class="quiz-title">  <!--landing page-start Quiz button-->
+            <h1>Coding Quiz Challenge</h1>
+        </div>
+        <div class="info-box">        
+            <span class="info">Try to answer following questions within the time limit.</span>
+            <span class="info">Keep in mind that the incorrect answers will penalize your score-time by 10 seconds.</span>        
+        </div>
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn">Start Quiz</button>
+        </div>
+    </section>    
+    <!--Questions page-->             
+    <section id="question-container" class="hide">      
+        <div id="question">Question</div>  <!--Every question is different, will generate via js--> 
+        <div id="answer-buttons" class="btn-grid">
+            <button class="btn" type="submit">Answer 1</button>            
+            <button class="btn" type="submit">Answer 2</button>            
+            <button class="btn" type="submit">Answer 3</button>         
+            <button class="btn" type="submit">Answer 4</button>
+        </div>
+    </section>        
+    <!--Ending Page-->
+    <section id="ending-section" class="hide"> 
+        <div>
+            <h1>All Done!</h1>
+            <label for="input-name">Your Name</label>
+            <input id="input-name" type="text">
+            <button class="btn" id="submit-btn" type="submit">Submit</button>
+        </div>  
+    </section>
+    <!--Highscores Page-->
+    <section id="high-score-page" class="hide">
+        <div>
+            <h1>Highscores</h1>
+            <label class="high-score" for="input-result">Scores</label>
+            <input id="result" type="text">
+            <button class="btn" id="go-back-btn" type="submit">Go back</button>
+            <button class="btn" id="high-score-btn" type="submit">Clear Highscores</button>
+    </div>
+    </section>
+
+    
+
+    <script src="script.js"></script>
+
+</body>
+</html>
