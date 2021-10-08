@@ -1,127 +1,127 @@
 // set variables to the elements
-let startGameButton = document.getElementById("start-btn");
-let quizSection = document.getElementById("quiz-section");
-let landingSection = document.getElementById("landing-section");
-let timerEl = document.getElementById("timer");
+// Start section
+const start = document.querySelector("#start");
 
+// Quiz Section
+const quiz = document.querySelector("#quiz");
+const time = document.querySelector("#time");
+const timeEl = document.querySelector("#time");
 
+// Question Section
+const questionEl = document.querySelector("#question");
+const answerEls = document.querySelectorAll(".answer");
+// Multiple choices of answers
+const a_text = document.querySelector("#a_text");
+const b_text = document.querySelector("#b_text");
+const c_text = document.querySelector("#c_text");
+const d_text = document.querySelector("#d_text");
 
+// total correct answers and next button
+const total_correct = document.querySelector("#total_correct");
+const nextBtn = document.querySelector("#next");
+
+let currentQuiz = 0;
+let score = 0;
+
+// Result Section
+//let points = document.querySelector("#points");
+//let result =  document.querySelector("#result");
+//let startAgain = document.querySelector("#startAgain");
+//let quit = document.querySelector("#quit");
+
+//Get all the elements from choice list
+//let btn = document.querySelector(".btn");
+
+let index = 0;
+let timeRemaining = 0;
 let intervalId = null;
-let timeRemaining = 10;
 
-// set timer for question page
-function startTimer(){
+// store the answer value
+let answer = undefined;
+
+function startTimer() {
     intervalId = setInterval(function () {
         console.log();
         timeRemaining = timeRemaining -1;
-
-        if(timeRemaining < 0) {
+        
+        if (timeRemaining < 0) {
             return endGame();
         }
-        // update the timer div
-        timerEl.textContent = timeRemaining;
+        //update timer div
+        timeEl.textContent = timeRemaining
     }, 1500);
 }
 
-
-//when start button is clicked, shows landing page
-// starts
-startGameButton.addEventListener("click", function(event){
-    event.defaultPrevented();
-// 1. Timer will start
+// when start button is clicked. timer has starts 
+start.addEventListener("click", ()=>{
     startTimer()
-    // 2. question page shows up
-    quizSection.classList.remove("hide");
-    // Hide the landing page when question section shows up
-    landingSection.classList.add("hide");
-})
-
-//open the ending Section and close quiz section
-function nameSubmit() {
-  //1. stop the timer
-  clearInterval(intervalId);
-  
-    endingSection.classList.remove("hide");
-
-    quizSection.classList.add("hide");
-//}
-
-const highscoreSection = document.getElementById("highscore-section")
-const endingSection = document.getElementById("ending-section")
-
-// High score section shows after the game finished
-function endGame() {
+    quiz.style.display = "block";
+    start.style.display = "none";
     
-    //2. show the high score page
-    highscoreSection.classList.remove("hide");
-    
-    endingSection.classList.add("hide");
+});
+
+// loading question list when the page is opened
+
+loadQuiz();
+// function to load questions
+function loadQuiz() {
+    deselectAnswers();
+    const currentQuizData = quizData[currentQuiz];
+
+    questionEl.innerHTML = currentQuizData.question;
+    a_text.innerText = currentQuizData.a;
+    b_text.innerText = currentQuizData.b;
+    c_text.innerText = currentQuizData.c;
+    d_text.innerText = currentQuizData.d;
+
 }
 
-//redirect to landing page
-function
+// what happens if the choice is selected
+function getSelected() {
+   // console.log("hi");
+    
+    let answer = undefined;
+
+    answerEls.forEach((answerEl) => {
+        if(answerEl.checked) {
+            answer = answerEl.id;
+        }
+    });
+
+    return answer;
+}
+
+// Need to deselect the answer when move to next question
+function deselectAnswers() {
+    answerEls.forEach((answerEl) => {
+       answerEl.checked = false 
+        
+    });
+}
+
+// when Next button is clicked: check if answer is selected, loop throu all questions
+nextBtn.addEventListener("click", () => {
+    // total points
+    
+    const answer = getSelected();
+   
+  //  console.log(answer);
+
+    if(answer) {
+
+        if(answer === quizData[currentQuiz].correct) {
+            score++;
+        }
+        currentQuiz++;
+        if(currentQuiz < quizData.length) {
+            loadQuiz();
+
+        } else {
+            quiz.innerHTML = `<h4>You answered correctly at ${score}/${quizData.length}question.</h4>`;
+        }    
+    }
+
+   
+});
 
 
-//const questionEl = document.getElementById('question');
-//const a_text = document.getElementById('a_text');
-//const b_text = document.getElementById('b_text');
-//const c_text = document.getElementById('c_text');
-//const d_text = document.getElementById('d_text');
-
-//Question page
-//set up questions 
-//let quizData = [
-//    {
-//        question: 'What does HTML stand for?',
-//        a: 'Hyper Text Multiple Language',
-//        b: 'Hyper Tool Multi Language',
-//        c: 'Hyper Text Markup Language',
-//        d: 'Hyper Text Mini Language',
-//        correct: 'c',
-//    },  {
-//        question: 'What is the most used programming language in 2021?',
-//        a: 'Java',
-//        b: 'Python',
-//        c: 'JavaSript',
-//        d: 'Jquery',
-//        correct: 'b',
-//
-//    }, {
-//        question: 'Which of the following is not a programming language?',
-//        a: 'TypeScript',
-//        b: 'Anaconda',
-//        c: 'JavaSript',
-//        d: 'C++',
-//        correct: 'b',
-//    }, {
-//        question: 'Commonly used data types DO NOT include: ',
-//        a: 'String',
-//        b: 'Boolean',
-//        c: 'Number',
-//        d: 'Alert',
-//        correct: 'b',
-//    }
-//] 
-
-//when we click on choice button
-
-//need to check if button clicked is the correct choice
-
-//is correct:
-//show a message or pop up box that the choice is correct
-//move on to the next question
-
-//if wrong:
-//move to next question
-//deduct time from timer
-//show a message that the choice is incorrect
-
-// When we end the game
-// 1. if user on the last question
-// after user click on the choice
-// 2. timer runs out
-
-//Ending Page-High score page
-//when form is submitted
-//we want to save the highscore
-//direct to the landing

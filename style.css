@@ -39,17 +39,8 @@ body {
     padding: 10px 35px;
 }
 
-/*.info-box {
-    height: 100px;
-    padding-top: 20px;
-}
-
-.info-box .info {
-    font-size: 20px;
-} */
-
-#header {
-    display: none; 
+#start {
+ /*   display: none; */
     height: auto; 
     width: 800px;
     max-width: 80%;
@@ -57,9 +48,10 @@ body {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px 2px;
+    cursor: pointer;
 }
 
-#start {
+#start-btn {
     background: indigo;
     border: none;
     border-radius: 5px;
@@ -71,46 +63,61 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     outline: none;
-    
+    cursor: pointer;
 } 
 
-#start:hover {
+#start-btn:hover {
     background-color: rgb(118, 22, 187);
 }
 
 /* quiz section */
-#quiz {
- /*   display: none; */
+.quiz-container {
+    display: none; 
     height: 500px; 
     width: 800px;
     max-width: 80%;
     background-color: white;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 10px 2px;
 }
-#timer {
+.quiz-header {
+    padding: 2rem;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+
+}
+ul li {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+ul li label {
+    cursor: pointer;
+}
+li  {
+    background: indigo;
+    color: white;
+    height: 45px;
+    width:fit-content;
+    border: none;
+    border-radius: 5px;
+    
+}
+li:hover {
+    background: rgb(118, 22, 187) ;
+}
+.timer {
     height: 50px;
     width: 120px;
     font-size: 18px;
     display: flex;    
     align-items: flex-end;    
 }
-#quiz_header h3 {
+.quiz_header h3 {
    font-size: 25px;
-   padding-bottom: 30px; 
-}
-.btn-grid {
-    display: row;
-    width: fit-content;  
-    row-gap: 10px;
-    margin: 20px 0;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.btn:hover {
-    background-color: rgb(118, 22, 187);
+   padding: none; 
 }
 
 .btn {
@@ -122,18 +129,33 @@ body {
     margin: 0 10px;
     justify-content: auto;
     outline: none;
-    height: 30px;
+    height: 45px;
     width: fit-content;
 }
-
+.btn:hover {
+    background-color: rgb(118, 22, 187);
+}
+.divided {
+    padding-top: 15px;
+    border-bottom: 1px solid black;
+}
 #answerSection {
     display: flex;
     justify-content: space-between;
-    padding-top: 50px;
+    padding-top: 0px;
+    height: 60px;
+    
 }
-
+#total_correct {
+    width: 120px;
+    display: none
+}
+#next {
+    width: 100px;
+    cursor: pointer;
+}
 /* result section */
-#result {
+#submit {
     display: none;  
     height: 300px; 
     width: 800px;
@@ -149,29 +171,50 @@ body {
     color: white;
     border: none;
     border-radius: 5px;
-    height: 30px;
+    height: 40px;
     width: 100px;
 }
 #submit_btn:hover {
     background: rgb(118, 22, 187);
     color: white;
 }
-#result h4 {
+#submit h4 {
     font-size: 18px;
     padding: 20px;
 }
-input {
+/*input {
     height: 35px;
     box-shadow: 0 0 10px 1px;
+} */
 
-}
 /* High Score Section */
-#highscore-section{
-    display: none;
+.high-score {
+    font-size: 25px;
+}
+
+#result {
+    display: none; 
+    height: 300px;
     width: 800px;
     max-width: 80%;
     background-color: white;
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 0 10px 2px;
+    box-shadow: 0 0 10px 2px;       
+}
+
+#points {
+    height: 35px;
+    width: 70%;
+} 
+.endGame-btn {
+    justify-content: space-between;
+    padding-top: 30px;
+    margin: 10px;
+}
+#startAgain,
+#quit {
+  
+    height: 45px;
+    width: 150px;
 }

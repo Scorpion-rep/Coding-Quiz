@@ -4,70 +4,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css" />
-    
+    <link rel="stylesheet" href="./style.css" />    
     <title>Quiz Challenge</title>
 </head> 
 
 <body>
     <!--Landing section-->
-    <section id="header">
+    <section id="start">
         <h1 class="title">Coding Quiz Challenge</h1>
         <h4>Try to answer the following questions within the time limit.</h4>
         <h4>The incorrect answers will penallize your score-time by 10 seconds</h4>
-        <div id="start">Start Quiz</div>
+        <div id="start-btn">Start Quiz</div>
     </section>
-        
+
     <!--Quiz section-->            
-    <section id="quiz" > 
-        <div id="quiz_header">  
-            <div id="timer">
+    <section class="quiz-container" id="quiz"> 
+        <div class="quiz_header">  
+            <div class="timer">
                 <h6>Time Left_</h6>
                 <h6 id="time">00</h6>
             </div> 
-            <!--Every question is different, will generate via js-->
-                  
-            <h3 id="questionText">What does HTML stands for</h3>  
-        </div>
-        <div id="optionList" class="btn-grid">            
-            <div class="btn" id="option1"> 1. Hyperlinks and Text Markup Language</div> <br>          
-            
-            <div class="btn" id="option2">2. Hyper Text Markup Language</div> <br>
-            
-            <div class="btn" id="option3">3. Hyper Text Making Language</div> <br>
-                
-            <div class="btn" id="option4">4. Hyper Text Mark Language</div> <br>     
-        </div>
+            <!--Every question is different, will generate via js-->           
+            <h3 id="question">Question Text</h3>  
+            <ul>
+                <li><input type="radio" id="a" name="answer" class="answer">                    
+                    <label for="a" id="a_text">Question</label>                    
+                </li>
+                <li><input type="radio" id="b" name="answer" class="answer">
+                    <label for="b" id="b_text">Question</label>
+                </li>
+                <li><input type="radio" id="c" name="answer" class="answer">
+                    <label for="c" id="c_text">Question</label>
+                </li>
+                <li><input type="radio" id="d" name="answer" class="answer" >
+                    <label for="d" id="d_text">Question</label>
+                </li>
+            </ul>    
+
+        </div>      
+
+        <p class="divided"></p>
         <div id="answerSection">
-            <button  id="total_correct" class="btn">3 out of 10</button>
-            <button  id="next_question" class="btn" >Next</button>
+            <button  id="total_correct" class="btn">3 out of 6</button>
+            <button  id="next" class="btn" >Next</button>
+        </div>            
+    </section> 
+
+    <!--Highscores Page-->
+    <section id="result">        
+        <h1>Highscores</h1>
+        <label class="high-score" for="input-result"> Your Score is:</label>
+        <input id="points" type="text" size="60px">
+        <div class="endGame-btn">
+            <button class="btn" id="startAgain" type="submit">Go back</button>
+            <button class="btn" id="quit" type="submit">Clear Highscores</button>
         </div>
-            
-    </section>   
+    </section> 
 
     <!--Ending Page-->
-    <section id="result">         
-            
+    <section id="submit">       
         <h1>All Done!</h1>
         <h4 id="points">Your Final Score Is: </h4> 
         <label for="input-name">Enter initials </label>
         <input id="input-name" type="text"  size="40">
-        <button id="submit_btn" type="submit">Submit</button>
-         
+        <button id="submit_btn" type="submit">Submit</button>         
     </section>
-    <!--Highscores Page-->
-    <section id="highscore-section">
-        
-        <h1>Highscores</h1>
-        <label class="high-score" for="input-result">Scores</label>
-        <input id="result" type="text">
-        <button class="btn" id="go-back-btn" type="submit">Go back</button>
-        <button class="btn" id="high-score-btn" type="submit">Clear Highscores</button>
-        
-    </section>        
-    
-  <!-- <script src="./script.js"></script> --> 
 
+    <script src="./questions.js"></script>       
+    <script src="./script.js"></script>  
+    
 
 </body>
 </html>
